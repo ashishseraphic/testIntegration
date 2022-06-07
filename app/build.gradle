@@ -142,7 +142,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.integrationdemo"
+        //applicationId "com.integrationdemo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -318,7 +318,7 @@ dependencies {
             implementation "com.facebook.fresco:animated-webp:${frescoVersion}"
         }
     }
-    implementation 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    implementation "com.github.dcendents:android-maven-gradle-plugin:2.1"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
@@ -380,8 +380,8 @@ afterEvaluate {
             release(MavenPublication) {
 
                 groupId = 'com.github.ashishseraphic'
-                artifactId = 'TestIntegration'
-                version = '1.0'
+                artifactId = 'testIntegration'
+                version = 'v1.1'
                 from components.release_apk
 
             }
