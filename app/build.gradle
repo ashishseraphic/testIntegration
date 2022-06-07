@@ -1,5 +1,4 @@
 apply plugin: "com.android.application"
-apply plugin: 'maven-publish'
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -142,7 +141,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        //applicationId "com.integrationdemo"
+        applicationId "com.integrationdemo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -318,7 +317,7 @@ dependencies {
             implementation "com.facebook.fresco:animated-webp:${frescoVersion}"
         }
     }
-    implementation "com.github.dcendents:android-maven-gradle-plugin:2.1"
+
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
@@ -367,24 +366,4 @@ def isNewArchitectureEnabled() {
     // - Invoke gradle with `-newArchEnabled=true`
     // - Set an environment variable `ORG_GRADLE_PROJECT_newArchEnabled=true`
     return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
-}
-
-task androidSourcesJar(type: Jar) {
-    classifier 'sources'
-    from android.sourceSets.main.java.srcDirs
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-
-                groupId = 'com.github.ashishseraphic'
-                artifactId = 'testIntegration'
-                version = 'v1.1'
-                from components.release_apk
-
-            }
-        }
-    }
 }
